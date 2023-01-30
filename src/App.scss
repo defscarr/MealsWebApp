@@ -1,0 +1,157 @@
+*{box-sizing: border-box;}
+main{
+    width: 100%;
+}
+.card--container{
+    display: grid;
+    max-width: 100%;
+    width: 90vh;
+    padding: 2rem 0;
+    margin: 0;
+    grid-gap: 2rem;
+}
+.card--card{
+    box-shadow:  0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out all ;
+}
+.card--card:hover{
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+.meal--image{
+    cursor: pointer;
+
+}
+.meal--footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.meal--footer span{
+    font-size: large;
+}
+.meal--footer span:nth-child(2):hover{
+    cursor: pointer;
+    color:darkred;
+    transform:translateY(-2px)
+}
+
+.search--block{
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+.search--area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.search--area form{
+    display: flex;
+    gap: 0.5rem;
+}
+.search--searchbar{
+    background-color: rgb(223, 245, 238);
+    border: 1px solid lightgray;
+
+}
+::placeholder{
+    color: lightslategray;
+    text-indent: 3rem;
+
+}
+
+.form--search{
+    border: none;
+    background-color: lightblue;
+    color: white;
+
+}
+.form--search:hover{
+    background-color: deepskyblue;
+
+}
+.form--random{
+    border: none;
+    background-color: rgb(63, 68, 56);
+    color: white;
+}
+.form--random:hover{
+    background-color: darkred;
+}
+
+
+.modal--container{
+    background-color: rgba(0,0,0,0.85);
+    display: grid;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    place-items: center;    
+    z-index:100;
+    transition: 0.3s ease-in-out all;
+
+}
+.modal--meal{
+
+    width:80vw;
+    max-width:800px;
+    height:80vh;
+    overflow:scroll;
+    background:white;
+    border-radius:5px;
+}
+.modal--img{
+    object-fit: fill;
+    height: 50vh;
+
+}
+.modal--footer{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+
+
+
+
+$bp: (
+    mobile: 480px,
+    tablet: 780px,
+    desktop: 1366px
+);
+
+@mixin query($screen){
+    @each $key, $value in $bp{
+        @if ($key == $screen){
+             @media (max-width: $value){@content;}
+    }
+}}
+
+@include query(mobile){
+    .card--container{
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+@include query(tablet){
+    .card--container{
+    grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
+@include query(desktop){
+    .card--container{
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+}
