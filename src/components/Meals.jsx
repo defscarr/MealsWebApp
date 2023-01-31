@@ -1,11 +1,11 @@
 import React from 'react'
 import {BsHandThumbsUp} from "react-icons/bs"
 import { UseGlobalContext } from '../Context'
-import { Card, Container } from 'react-bootstrap'
+import { Button, Card, Container } from 'react-bootstrap'
 
 export const Meals = () => {
 
-    const {Meals, IsLoading, ChooseMeal, SelectedMeal, MakeFavorite} = UseGlobalContext()
+    const {Meals, IsLoading, ChooseMeal, MakeFavorite} = UseGlobalContext()
     
     if(IsLoading)
         return (
@@ -32,7 +32,9 @@ export const Meals = () => {
                                 ></Card.Img>
                                 <Card.Footer className='meal--footer'>
                                     <span>{MealName}</span>
-                                    <span onClick={() => MakeFavorite(MealID)}><BsHandThumbsUp /></span>
+                                    <span>
+                                        <BsHandThumbsUp onClick={() => MakeFavorite(MealID)}/>
+                                    </span>
                                 </Card.Footer>
 
                             </Card>

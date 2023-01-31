@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Stack } from 'react-bootstrap'
 import { UseGlobalContext } from '../Context'
 
 
 export const Favorite = () => {
-    const {FavoriteMeals, ChooseMeal} = UseGlobalContext()
+    const {FavoriteMeals, RemoveFromFavorite, ChooseMeal} = UseGlobalContext()
 
     
     return (
@@ -16,7 +16,7 @@ export const Favorite = () => {
                         FavoriteMeals.map( meal => {
                             const {strMealThumb: MealImage, strMeal: MealName, idMeal: MealID} = meal
                             return (
-                                <>
+                                <div className='favorite--object'>
                                 
                                     <img 
                                         src={MealImage} 
@@ -29,7 +29,7 @@ export const Favorite = () => {
                                         className='favorite--remove'
                                         onClick={() => RemoveFromFavorite(MealID)}
                                     >Remove</span>
-                                </>
+                                </div>
                                     
                                     )
                         })

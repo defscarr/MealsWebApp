@@ -17,7 +17,7 @@ export const App = () => {
     <main>
 
       <Search />
-      { FavoriteMeals.length < 1 && <Favorite />}
+      { FavoriteMeals.length > 0 && <Favorite />}
       <Meals />
       { ShowModal && <Modal />}
       

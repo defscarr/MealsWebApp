@@ -4,11 +4,12 @@ import { UseGlobalContext } from '../Context'
 
 
 export const Modal = () => {
-    const {SelectedMeal} = UseGlobalContext()
+    const {SelectedMeal, CloseModal} = UseGlobalContext()
     console.log(SelectedMeal)
 
     
     const {
+        idMeal: MealID,
         strMeal: MealName, 
         strInstructions: MealDescription, 
         strMealThumb:MealImage, 
@@ -27,7 +28,7 @@ export const Modal = () => {
 
                         <Card.Footer className='modal--footer'>
                             <Card.Link href={OriginalSource}>OriginalSource</Card.Link>
-                            <Button variant="secondary" onClick={null}>Close</Button>
+                            <Button variant="secondary" onClick={() => CloseModal()}>Close</Button>
                         </Card.Footer>
 
                     </Card.Body>

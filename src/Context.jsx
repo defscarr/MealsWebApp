@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
-import { Search } from "./components/Search";
+
 
 
 const AppContext = createContext();
@@ -88,26 +88,32 @@ useEffect(() => {
 const MakeFavorite = (MealID) => {
 
     const CheckFavorite = FavoriteMeals.find( meal => meal.idMeal === MealID)
-    const Favorite = Meals.find( meal => meal.idMeal === MealID)
     if(CheckFavorite) return
-    setFavoriteMeals(Favorite)
+    const Favorite = Meals.find( meal => meal.idMeal === MealID)
+    setFavoriteMeals([...FavoriteMeals, Favorite])
     
 }
 
 const RemoveFromFavorite = (MealID) => {
     const UpdatedFavorite = FavoriteMeals.filter( meal => meal.idMeal !== MealID)
     setFavoriteMeals(UpdatedFavorite)
+
 }
 
 // End of Favorite Functions
 
+// Modal Functions
+const CloseModal = () => {
+    setShowModal(false)
+}
+// End of Modal Functions
     return (
         <AppContext.Provider
             value={{
                 Meals, ChooseMeal, SelectedMeal, setSelectedMeal, GetRandomMeal,
                 IsLoading,
                 setSearchTerm, SearchTerm,   
-                ShowModal,
+                ShowModal, CloseModal,
                 MakeFavorite, FavoriteMeals, RemoveFromFavorite
                 
             }}
