@@ -1,9 +1,27 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-
-
 const AppContext = createContext();
+
+// const getFavoritesFromLocalStorage = () => {
+//     let favorites = localStorage.getItem('favorites');
+//     if (favorites) {
+//       favorites = JSON.parse(localStorage.getItem('favorites'))
+//     }
+//     else {
+//       favorites = []
+//     }
+//     return favorites
+//   }
+  
+
+
+const GetOldFavorite = () => {
+    const LoadCache = localStorage.getItem("FavoriteMeals")
+    if(LoadCache)
+        return JSON.parse(localStorage.getItem("FavoriteMeals"))
+    
+}
 
 const AppProvider = ({children}) => {
 
@@ -28,9 +46,16 @@ const [ShowModal, setShowModal] = useState(false);
 // 
 
 // Favorite States
-const [FavoriteMeals, setFavoriteMeals] = useState([]);
+const [FavoriteMeals, setFavoriteMeals] = useState(GetOldFavorite() || []);
 // End of Favorite States
 
+
+// Add Favorite Meals to localstorage cache
+
+useEffect(() => {
+    localStorage.setItem("FavoriteMeals", JSON.stringify(FavoriteMeals))
+}, [FavoriteMeals]);
+// 
 
 
 
