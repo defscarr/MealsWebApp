@@ -47,6 +47,8 @@ const [ShowModal, setShowModal] = useState(false);
 
 // Favorite States
 const [FavoriteMeals, setFavoriteMeals] = useState(GetOldFavorite() || []);
+const [IsLiked, setIsLiked] = useState(false);
+
 // End of Favorite States
 
 
@@ -115,8 +117,9 @@ const MakeFavorite = (MealID) => {
     const CheckFavorite = FavoriteMeals.find( meal => meal.idMeal === MealID)
     if(CheckFavorite) return
     const Favorite = Meals.find( meal => meal.idMeal === MealID)
+
     setFavoriteMeals([...FavoriteMeals, Favorite])
-    
+   
 }
 
 const RemoveFromFavorite = (MealID) => {
@@ -139,7 +142,7 @@ const CloseModal = () => {
                 IsLoading,
                 setSearchTerm, SearchTerm,   
                 ShowModal, CloseModal,
-                MakeFavorite, FavoriteMeals, RemoveFromFavorite
+                MakeFavorite, FavoriteMeals, RemoveFromFavorite,
                 
             }}
 

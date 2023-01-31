@@ -4,7 +4,16 @@ import { UseGlobalContext } from '../Context'
 
 
 export const Favorite = () => {
-    const {FavoriteMeals, RemoveFromFavorite, ChooseMeal} = UseGlobalContext()
+    const {
+        FavoriteMeals, 
+        RemoveFromFavorite, 
+        ChooseMeal,
+
+
+        } = UseGlobalContext()
+
+
+
 
     
     return (

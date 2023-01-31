@@ -5,7 +5,21 @@ import { Button, Card, Container } from 'react-bootstrap'
 
 export const Meals = () => {
 
-    const {Meals, IsLoading, ChooseMeal, MakeFavorite} = UseGlobalContext()
+    const {
+
+        Meals, 
+        IsLoading, 
+        ChooseMeal, 
+        MakeFavorite,
+
+    } = UseGlobalContext()
+
+    const Liked = {
+        color: "deepskyblue",
+    }
+    const UnLiked = {
+        color: "black",
+    }
     
     if(IsLoading)
         return (
@@ -33,7 +47,9 @@ export const Meals = () => {
                                 <Card.Footer className='meal--footer'>
                                     <span>{MealName}</span>
                                     <span>
-                                        <BsHandThumbsUp onClick={() => MakeFavorite(MealID)}/>
+                                        <BsHandThumbsUp
+                                             onClick={() => MakeFavorite(MealID)}
+                                        />
                                     </span>
                                 </Card.Footer>
 
